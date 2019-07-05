@@ -38,6 +38,12 @@ class UsersController < ApplicationController
     counts(@user)
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "退会が完了しました.ご利用ありがとうございました."
+    redirect_to root_url
+  end
 
   private
   def user_params
